@@ -1,0 +1,71 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: LooksRare
+    network: mainnet
+    source:
+      address: "0x59728544B08AB483533076417FbBB2fD0B17CE3a"
+      abi: LooksRare
+      startBlock: 13885625
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - collection
+        - token
+        - transfer
+      abis:
+        - name: LooksRare
+          file: LooksRare/abis/LooksRare.json
+      eventHandlers:
+        - event: TakerBid(bytes32,uint256,indexed address,indexed address,indexed
+            address,address,address,uint256,uint256,uint256)
+          handler: handleTakerBid
+      file: LooksRare/LooksRare.wasm
+  - kind: ethereum
+    name: WyvernExchangeV1
+    network: mainnet
+    source:
+      address: "0x7Be8076f4EA4A4AD08075C2508e481d6C946D12b"
+      abi: WyvernExchangeV1
+      startBlock: 5774644
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - collection
+        - token
+        - transfer
+      abis:
+        - name: WyvernExchangeV1
+          file: WyvernExchangeV1/abis/WyvernExchangeV1.json
+      callHandlers:
+        - function: atomicMatch_(address[14],uint256[18],uint8[8],bytes,bytes,bytes,bytes,bytes,bytes,uint8[2],bytes32[5])
+          handler: handleAtomicMatchV1
+      file: LooksRare/LooksRare.wasm
+  - kind: ethereum
+    name: WyvernExchangeV2
+    network: mainnet
+    source:
+      address: "0x7f268357A8c2552623316e2562D90e642bB538E5"
+      abi: WyvernExchangeV2
+      startBlock: 14679560
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - collection
+        - token
+        - transfer
+      abis:
+        - name: WyvernExchangeV2
+          file: WyvernExchangeV2/abis/WyvernExchangeV2.json
+      callHandlers:
+        - function: atomicMatch_(address[14],uint256[18],uint8[8],bytes,bytes,bytes,bytes,bytes,bytes,uint8[2],bytes32[5])
+          handler: handleAtomicMatchV2
+      file: LooksRare/LooksRare.wasm

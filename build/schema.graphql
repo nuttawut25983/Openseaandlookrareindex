@@ -1,0 +1,68 @@
+
+type transfer @entity
+{
+    "Contract Address Collection - TokenID"
+    id: ID!
+
+    "Contract Address Collection"
+    contract: String!
+
+    "transactionhash"
+    transactionhash: String!
+
+    "TokenId"
+    tokenId: String!
+
+    "blockNumner"
+    blockNum: Int
+
+    "Sender Address"
+    senderAddress: Bytes
+
+    "Receiver Address"
+    receiverAddress: Bytes
+
+    "Price Transfer"
+    price: BigDecimal
+
+    "Platform Transfer"
+    platform: String
+
+    "Eventname"
+    eventname: String
+
+    "Timestamp Transfer"
+    timestamp: BigInt
+
+}
+type collection @entity {
+
+    " The address of the collection "
+    id: ID!
+
+    " Total sales "
+    totalSales: Int
+
+    " Total volume "
+    totalVolume: BigDecimal!
+
+    " Top Sale ever "
+    topSale: BigDecimal!
+
+}
+
+type token @entity {
+
+    " The collection addrress - The token id "
+    id: ID!
+
+    "Contract Address Collection"
+    collection: collection!
+
+    " The NFT last price "
+    lastPrice: BigDecimal!
+
+    " The NFT top sale ever "
+    topSale: BigDecimal!
+
+}

@@ -1,0 +1,16 @@
+{
+  "name": "openseaandlookrareindex",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ nuttawut25983/openseaandlookrareindex",
+    "create-local": "graph create --node http://localhost:8020/ nuttawut25983/openseaandlookrareindex",
+    "remove-local": "graph remove --node http://localhost:8020/ nuttawut25983/openseaandlookrareindex",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 nuttawut25983/openseaandlookrareindex"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.29.0",
+    "@graphprotocol/graph-ts": "0.26.0"
+  }
+}
